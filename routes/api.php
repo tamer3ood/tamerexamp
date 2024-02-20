@@ -12,6 +12,8 @@ use App\Http\Controllers\API\Categories\CategoryAttributeItemController;
 use App\Http\Controllers\API\Categories\CategoryElementController;
 use App\Http\Controllers\API\Categories\CategoryServiceController;
 use App\Http\Controllers\API\Tamers\Orders\TamerOrderV1Controller;
+use App\Http\Controllers\API\Categories\CategoryElementAddOnAttributeController;
+use App\Http\Controllers\API\Categories\CategoryServiceAddOnAttributeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +45,10 @@ Route::get('categories/category-attributes/{category_id}', [CategoryAttributeCon
 Route::get('categories/category-attribute-items', [CategoryAttributeItemController::class, 'index']);
 Route::get('categories/category-elements/{category_id}', [CategoryElementController::class, 'index']);
 Route::get('categories/category-services/{category_id}', [CategoryServiceController::class, 'index']);
+
+
+Route::get('categories/category-service-add-on-atts/{category_service_id}', [CategoryServiceAddOnAttributeController::class, 'index']);
+Route::get('categories/category-element-add-on-atts/{category_element_id}', [CategoryElementAddOnAttributeController::class, 'index']);
 
 //tamer order
 Route::post('tamers/orders/ORD64b162e4a89ab/{tamer_id}', [TamerOrderV1Controller::class, 'store']);
