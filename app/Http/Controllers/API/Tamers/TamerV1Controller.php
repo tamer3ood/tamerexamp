@@ -327,7 +327,8 @@ class TamerV1Controller extends Controller
         } catch (Exception $ex) {
             return response()->json(
                 [
-                    "error" => "Somethings Errors",
+                    // "error" => "Somethings Errors",
+                    'errors' => $ex->getMessage(),
                 ],
                 422
             );
