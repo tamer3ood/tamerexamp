@@ -9,4 +9,8 @@ class TamerRequirement extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    public function forMultipleChoices()
+    {
+        return $this->hasMany('App\Models\TamerRequirementForMultipleChoice', 'tamer_requirement_id');
+    }
 }
