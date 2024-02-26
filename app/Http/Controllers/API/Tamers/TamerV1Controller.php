@@ -559,7 +559,19 @@ class TamerV1Controller extends Controller
 
     public function show_shw4(Tamer $tamer)
     {
-        return new Tamer4Resource($tamer);
+        try {
+            return new Tamer4Resource($tamer);
+        } catch (\Exception $e) {
+            return $e->getMessage();
+            // return response()->json(
+            //     [
+            //         "error" => "Somethings Errors",
+
+            //     ],
+            //     422
+            // );
+        }
+
     }
 
     public function show_shw5(Tamer $tamer)
@@ -569,6 +581,7 @@ class TamerV1Controller extends Controller
 
     public function show_shw6(Tamer $tamer)
     {
+
         return new Tamer6Resource($tamer);
     }
 
@@ -580,7 +593,7 @@ class TamerV1Controller extends Controller
         //
     }
 
-    
+
     //update
 
     public function update_stp1(Request $request, Tamer $tamer)
@@ -799,9 +812,9 @@ class TamerV1Controller extends Controller
                             "basic_pk_element_value" =>
                                 $pk["basic_pk_element_value"],
                             "standard_pk_element_value" =>
-                            $pk["standard_pk_element_value"],
+                                $pk["standard_pk_element_value"],
                             "advanced_pk_element_value" =>
-                            $pk["advanced_pk_element_value"],
+                                $pk["advanced_pk_element_value"],
                         ]);
                     }
 
@@ -922,7 +935,7 @@ class TamerV1Controller extends Controller
                             "title_for_custom_add_on" =>
                                 $pk["title_for_custom_add_on"],
                             "description_for_custom_add_on" =>
-                            $pk["description_for_custom_add_on"],
+                                $pk["description_for_custom_add_on"],
                         ]);
                     }
 
@@ -1076,7 +1089,7 @@ class TamerV1Controller extends Controller
                         "is_mandatory_requirement" =>
                             $req["is_mandatory_requirement"],
                         "is_allow_more_than_one_answer_for_multi_choice" =>
-                        $req["is_allow_more_than_one_answer_for_multi_choice"],
+                            $req["is_allow_more_than_one_answer_for_multi_choice"],
                     ]);
                 }
 
