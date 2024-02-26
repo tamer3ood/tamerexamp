@@ -429,6 +429,20 @@ class TamerV1Controller extends Controller
                         $req["is_mandatory_requirement"],
                     "is_allow_more_than_one_answer_for_multi_choice" =>
                         $req["is_allow_more_than_one_answer_for_multi_choice"],
+                    "firstـchoice_text" =>
+                        $req["firstـchoice_text"],
+                    "secondـchoice_text" =>
+                        $req["secondـchoice_text"],
+                    "thirdـchoice_text" =>
+                        $req["thirdـchoice_text"],
+                    "fourthـchoice_text" =>
+                        $req["fourthـchoice_text"],
+                    "fifthـchoice_text" =>
+                        $req["fifthـchoice_text"],
+                    "sixthـchoice_text" =>
+                        $req["sixthـchoice_text"],
+
+
                 ]);
 
 
