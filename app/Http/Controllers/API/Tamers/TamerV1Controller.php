@@ -320,17 +320,18 @@ class TamerV1Controller extends Controller
                             $pk["description_for_custom_add_on"],
                     ]);
 
-                    $tamer = Tamer::findOrFail($request->input('tamer_id'));
-                    $tamer->has_basic_package = $request->input('is_basic');
-                    $tamer->has_standard_package = $request->input('is_standard');
-                    $tamer->has_advanced_package = $request->input('is_advanced');
-                    $tamer->basic_package_price = $request->input('basic_package_price');
-                    $tamer->standard_package_price = $request->input('standard_package_price');
-                    $tamer->advanced_package_price = $request->input('advanced_package_price');
-                    $tamer->update();
+
 
                 }
             }
+            $tamer = Tamer::findOrFail($request->input('tamer_id'));
+            $tamer->has_basic_package = $request->input('is_basic');
+            $tamer->has_standard_package = $request->input('is_standard');
+            $tamer->has_advanced_package = $request->input('is_advanced');
+            $tamer->basic_package_price = $request->input('basic_package_price');
+            $tamer->standard_package_price = $request->input('standard_package_price');
+            $tamer->advanced_package_price = $request->input('advanced_package_price');
+            $tamer->update();
         } catch (Exception $ex) {
             return response()->json(
                 [
