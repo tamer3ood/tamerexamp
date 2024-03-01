@@ -23,9 +23,6 @@ class Tamer1Resource extends JsonResource
             'sub_category_id' => $this->sub_category_id,
             'category_type_id' => $this->category_type_id,
             'category_attribute_items' => \App\Http\Resources\Categories\CategoryAttributeItemResource::collection($this->tamerCategoryAttributeItems),
-            'basic_package_price' => $this->basic_package_price,
-            'standard_package_price' => $this->standard_package_price,
-            'advanced_package_price' => $this->advanced_package_price,
 
         ];
     }

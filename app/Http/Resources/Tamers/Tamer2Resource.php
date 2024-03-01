@@ -15,11 +15,15 @@ class Tamer2Resource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id'=>$this->id,
-            'title'=>$this->title,
-            'tamer_category_elements'=>TamerCategoryElementResource::collection($this->tamerCategoryElements),
-            'tamer_category_services'=>TamerCategoryServiceResource::collection($this->tamerCategoryServices),
-            'tamer_add_ons'=>TamerAddOnResource::collection($this->tamerAddOns),
+            'id' => $this->id,
+            'title' => $this->title,
+            'tamer_category_elements' => TamerCategoryElementResource::collection($this->tamerCategoryElements),
+            'tamer_category_services' => TamerCategoryServiceResource::collection($this->tamerCategoryServices),
+            'tamer_add_ons' => TamerAddOnResource::collection($this->tamerAddOns),
+            'basic_package_price' => $this->basic_package_price,
+            'standard_package_price' => $this->standard_package_price,
+            'advanced_package_price' => $this->advanced_package_price,
+
         ];
     }
 }
