@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Str;
 
 class Category extends Model
 {
@@ -38,5 +39,10 @@ class Category extends Model
     public function categoryServices()
     {
         return $this->hasMany('App\Models\CategoryService', 'category_id');
+    }
+    public function categoryTypes()
+    {
+        return $this->hasMany('App\Models\Category', 'parent_id');
+
     }
 }

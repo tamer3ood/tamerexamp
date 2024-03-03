@@ -576,7 +576,7 @@ class TamerV1Controller extends Controller
     {
         try {
             return new Tamer4Resource($tamer);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return $e->getMessage();
             // return response()->json(
             //     [
@@ -804,7 +804,7 @@ class TamerV1Controller extends Controller
                     if ($request->input("is_advanced") == 1) {
                         if ($request->input("is_basic") == 0 || $request->input("is_standard") == 0) {
                             return response()->json(['message' => 'fill standard first'], 422);
-                            return;
+
                         }
 
                     }
@@ -969,10 +969,10 @@ class TamerV1Controller extends Controller
 
                 }
             }
-        } catch (\Exeption $ex) {
+        } catch (Exception $ex) {
             return response()->json(
                 [
-                    "error" => "Somethings Errors",
+                    "error" => $ex->getMessage(),
                 ],
                 422
             );
