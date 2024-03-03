@@ -788,10 +788,20 @@ class TamerV1Controller extends Controller
         ]);
         try {
 
+            // $tamer = Tamer::findOrFail($tamer_id);
+            // $tamer->has_basic_package = $request->input('is_basic');
+            // $tamer->has_standard_package = $request->input('is_standard');
+            // $tamer->has_advanced_package = $request->input('is_advanced');
+            // $tamer->update();
+
+
             $tamer = Tamer::findOrFail($tamer_id);
             $tamer->has_basic_package = $request->input('is_basic');
             $tamer->has_standard_package = $request->input('is_standard');
             $tamer->has_advanced_package = $request->input('is_advanced');
+            $tamer->basic_package_price = $request->input('basic_package_price');
+            $tamer->standard_package_price = $request->input('standard_package_price');
+            $tamer->advanced_package_price = $request->input('advanced_package_price');
             $tamer->update();
 
             $validationMessages = [];
@@ -955,14 +965,7 @@ class TamerV1Controller extends Controller
                         ]);
                     }
 
-                    $tamer = Tamer::findOrFail($tamer_id);
-                    $tamer->has_basic_package = $request->input('is_basic');
-                    $tamer->has_standard_package = $request->input('is_standard');
-                    $tamer->has_advanced_package = $request->input('is_advanced');
-                    $tamer->basic_package_price = $request->input('basic_package_price');
-                    $tamer->standard_package_price = $request->input('standard_package_price');
-                    $tamer->advanced_package_price = $request->input('advanced_package_price');
-                    $tamer->update();
+
 
 
 
