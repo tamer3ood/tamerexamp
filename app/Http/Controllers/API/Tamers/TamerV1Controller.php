@@ -787,6 +787,7 @@ class TamerV1Controller extends Controller
 
         ]);
         try {
+
             $tamer = Tamer::findOrFail($tamer_id);
             $tamer->has_basic_package = $request->input('is_basic');
             $tamer->has_standard_package = $request->input('is_standard');

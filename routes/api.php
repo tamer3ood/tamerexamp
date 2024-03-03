@@ -93,6 +93,23 @@ Route::post('tamers/orders/REQ64b37d917dc30/{tamer_id}/{tamer_order_id}', [Tamer
 
 Route::get('tamers/orders/SHOW64b40a338c436/{tamerOrder}', [TamerOrderV1Controller::class, 'show']);
 
+
+
+//UPDATE TAMER
+
+Route::put('tamers/update/STP1TMR649d57b4aafc7/{tamer}', [TamerV1Controller::class, 'update_stp1']);
+Route::put('tamers/update/STP2TMR649d57c95449e/{tamer}', [TamerV1Controller::class, 'update_stp2']);
+Route::post('tamers/update/STP3TMR649d57d67f2df/{tamer}', [TamerV1Controller::class, 'update_stp3']);
+Route::put('tamers/update/STP4TMR649d57ec1b5e3/{tamer}', [TamerV1Controller::class, 'update_stp4']);
+
+Route::put('tamers/update/STP5TMR649d580117390/{tamer}', [TamerV1Controller::class, 'update_stp5']);
+
+
+Route::put('tamers/update/STP6TMR649d581086b09/{tamer}', [TamerV1Controller::class, 'update_stp6']);
+Route::put('tamers/update/STUSTMR64b0225f2d0a4/{tamer}', [TamerV1Controller::class, 'update_status']);
+
+
+
 Route::resource('jobs', JobV1Controller::class);
 Route::post('job/proposals/{job_id}', [JobProposalController::class, 'store']);
 
