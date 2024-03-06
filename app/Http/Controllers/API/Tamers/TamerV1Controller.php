@@ -1116,10 +1116,10 @@ class TamerV1Controller extends Controller
 
 
             }
-        } catch (\Exeption $ex) {
+        } catch (Exception $ex) {
             return response()->json(
                 [
-                    "error" => "Somethings Errors",
+                    "error" => $ex->getMessage()
                 ],
                 422
             );
@@ -1222,10 +1222,10 @@ class TamerV1Controller extends Controller
                 $tamer->update();
             }
 
-        } catch (\Exeption $ex) {
+        } catch (Exception $ex) {
             return response()->json(
                 [
-                    "error" => "Somethings Errors",
+                    "error" => $ex->getMessage(),
                 ],
                 422
             );
@@ -1259,11 +1259,11 @@ class TamerV1Controller extends Controller
                 $tamer->status = "underReview";
             }
             $tamer->update();
-        } catch (\Exception $ex) {
+        } catch (Exception $ex) {
             return response()->json(
                 [
-                    // "error" => $ex->getMessage(),
-                    "error" => "Somethings Errors",
+                    "error" => $ex->getMessage(),
+                    // "error" => "Somethings Errors",
                 ],
                 422
             );
