@@ -31,6 +31,7 @@ use App\Http\Controllers\API\Jobs\JobProposalController;
 Route::post('tamers/auth/LOGIN64b4001b47c78', [AuthController::class, 'login']);
 Route::post('tamers/auth/REG64b4005b933ce', [AuthController::class, 'register']);
 //STORE TAMER
+Route::post('tamers/store/TMR6491706fcb506', [TamerV1Controller::class, 'store']);
 Route::post('tamers/store/STP1TMR6491706fcb506', [TamerV1Controller::class, 'store_stp1']);
 Route::post('tamers/store/STP2TMR64947bf287268', [TamerV1Controller::class, 'store_stp2']);
 Route::post('tamers/store/STP3TMR6496e7ff131d1', [TamerV1Controller::class, 'store_stp3']);
@@ -39,6 +40,8 @@ Route::post('tamers/store/STP5TMR6496e9d30854e', [TamerV1Controller::class, 'sto
 Route::post('tamers/store/STP6TMR6496e9e159c0b', [TamerV1Controller::class, 'store_stp6']);
 
 //SHOW TAMER
+Route::get('tamers/show/TMR649d590f0d7f3', [TamerV1Controller::class, 'index']);
+Route::get('tamers/show/TMR649d590f0d7f3/{tamer}', [TamerV1Controller::class, 'show']);
 
 Route::get('tamers/show/SHW1TMR649d590f0d7f3/{tamer}', [TamerV1Controller::class, 'show_shw1']);
 Route::get('tamers/show/SHW2TMR649d591a6f0b3/{tamer}', [TamerV1Controller::class, 'show_shw2']);

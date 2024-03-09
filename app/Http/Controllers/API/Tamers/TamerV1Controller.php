@@ -24,6 +24,7 @@ use App\Http\Resources\Tamers\Tamer3Resource;
 use App\Http\Resources\Tamers\Tamer4Resource;
 use App\Http\Resources\Tamers\Tamer5Resource;
 use App\Http\Resources\Tamers\Tamer6Resource;
+use App\Http\Resources\Tamers\TamerResource;
 
 class TamerV1Controller extends Controller
 {
@@ -32,7 +33,152 @@ class TamerV1Controller extends Controller
      */
     public function index()
     {
-        //
+        return TamerResource::collection(Tamer::all());
+    }
+    public function store(Request $request)
+    {
+        $request->validate([
+            "sub_category_id" => "required|exists:categories,id",
+            "category_id" => "required|exists:categories,id",
+            "title" => "required|string",
+            "tamer_category_attribute_items" => "array",
+            // "tamer_search_tags" => "exists:search_tags,id|array",
+        ]);
+        try {
+
+
+            $category = Category::findOrFail($request->input("category_id"));
+            $sub_category = Category::findOrFail($request->input("sub_category_id"));
+            // dd($sub_category);
+
+            $validationMessages = [];
+            $validItems = [];
+
+            // $sub_categories = $category->subCategories;
+
+
+
+
+            $sub_category_ids = $category->subCategories->pluck("id")->all();
+            if (count($sub_category_ids) > 0) {
+                if (!in_array($request->input('sub_category_id'), $sub_category_ids)) {
+                    $validationMessages[] = "Selected Sub Category not belongs to the main category";
+
+                }
+            }
+
+
+
+            $attributes = $sub_category->categoryAttributes;
+            // dd($attributes);
+            foreach ($attributes as $key => $attribute) {
+                // if ($attribute->is_required == 1) {
+                $attributeItems = $attribute->categoryAttributeItems->pluck("id")->all();
+                $submittedItems = $request->input("tamer_category_attribute_items", []);
+                $intersect = array_intersect($submittedItems, $attributeItems);
+                $numItems = count($intersect);
+
+                if ($numItems <= 0 && $attribute->is_required) {
+                    $validationMessages[] = 'The ' . $attribute->title_en . ' field is required, ';
+                }
+                if (
+
+                    // $numItems < $attribute->min_no_of_items ||
+                    $numItems > $attribute->max_no_of_items
+                    // $numItems < 1 ||
+                    // $numItems > $attribute->max_no_of_items
+                ) {
+                    $validationMessages[] = 'The ' . $attribute->title_en . ' field must have a maximum ' .
+                        $attribute->max_no_of_items . ' at index: ' . $key;
+                }
+
+
+                $validItems = array_merge($validItems, $intersect);
+                $submittedItems = CategoryAttributeItem::whereIn(
+                    "id",
+                    $request->input("tamer_category_attribute_items", [])
+                )->get();
+                foreach ($submittedItems as $submittedItem) {
+                    if (
+                        $submittedItem->categoryAttribute->category_id !==
+                        $sub_category->id
+                    ) {
+                        return response()->json(
+                            [
+                                "error" =>
+                                    "The submitted item does not belong to the same category as the service.",
+                            ],
+                            422
+                        );
+                    }
+                }
+
+                if (
+                    empty($validItems) &&
+                    count($validationMessages) === 0
+                ) {
+                    return response()->json(
+                        [
+                            "error" =>
+                                "The submitted items do not belong to any of the category attributes.",
+                        ],
+                        422
+                    );
+                }
+
+                if (!empty($validationMessages)) {
+                    return response()->json(
+                        ["errors" => $validationMessages],
+                        422
+                    );
+                }
+                // }
+            }
+
+
+            if (!empty($validationMessages)) {
+                return response()->json(
+                    ["errors" => $validationMessages],
+                    422
+                );
+            }
+            dd('stop');
+            //تم وضع الرقم ١٠٠ مكان تالنت 
+            $tamerData = [
+                "title" => $request->input("title"),
+                "talent_id" => 100,
+                "category_id" => $request->input("category_id"),
+                "sub_category_id" => $request->input("sub_category_id"),
+                "category_type_id" => $request->input("category_type_id"),
+            ];
+
+            $tamer = Tamer::create($tamerData);
+            // if($tamer){
+            $tamer->tamerCategoryAttributeItems()->sync($validItems);
+
+            if ($request->tamer_search_tags) {
+                $tamer_search_tags = $request->input("tamer_search_tags", []);
+                $tamer->tamerSearchTags()->sync($tamer_search_tags);
+            }
+            return response()->json([
+                'message' => 'Step no 1 saved Successfully!',
+                'tamer_id' => $tamer->id,
+            ], 200);
+
+            // }
+
+
+        } catch (Exception $e) {
+            return $e->getMessage();
+            // return response()->json(
+            //     [
+            //         "error" => "Somethings Errors",
+
+            //     ],
+            //     422
+            // );
+        }
+
     }
 
     public function store_stp1(Request $request)
@@ -552,6 +698,11 @@ class TamerV1Controller extends Controller
                 422
             );
         }
+    }
+
+    public function show(Tamer $tamer)
+    {
+        return new TamerResource($tamer);
     }
 
     /**
