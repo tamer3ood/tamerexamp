@@ -20,7 +20,7 @@ class TamerCategoryServiceResource extends JsonResource
             'is_basic_pk' => $this->is_basic_pk,
             'is_standard_pk' => $this->is_standard_pk,
             'is_advanced_pk' => $this->is_advanced_pk,
-            'category_service_en' => $this->categoryService->title_en,
+            'category_service_title_en' => $this->categoryService->title_en,
         ];
     }
 }

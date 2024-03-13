@@ -32,7 +32,7 @@ class TamerCategoryElementResource extends JsonResource
             'basic_pk_element_value' => $this->basic_pk_element_value,
             'standard_pk_element_value' => $this->standard_pk_element_value,
             'advanced_pk_element_value' => $this->advanced_pk_element_value,
-            'category_element_en' => $this->categoryElement->title_en,
+            'category_element_title_en' => $this->categoryElement->title_en,
             'is_delivery_days' => $is_delivery_days,
             'is_number_of_revisions' => $is_number_of_revisions,
         ];
