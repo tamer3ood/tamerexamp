@@ -14,6 +14,16 @@ class TamerCategoryElementResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        $is_delivery_days = false;
+        $is_number_of_revisions = false;
+        if ($this->categoryElement->title_en === 'Delivery Days') {
+            $is_delivery_days = true;
+        } elseif ($this->categoryElement->title_en === 'Number of Revisions') {
+            $is_number_of_revisions = true;
+        } else {
+            $is_delivery_days = false;
+            $is_number_of_revisions = false;
+        }
         return [
             'id' => $this->id,
             'tamer_id' => $this->tamer_id,
@@ -23,6 +33,8 @@ class TamerCategoryElementResource extends JsonResource
             'standard_pk_element_value' => $this->standard_pk_element_value,
             'advanced_pk_element_value' => $this->advanced_pk_element_value,
             'category_element_en' => $this->categoryElement->title_en,
+            'is_delivery_days' => $is_delivery_days,
+            'is_number_of_revisions' => $is_number_of_revisions,
         ];
     }
 }

@@ -19,6 +19,10 @@ class Tamer extends Model
         $this->attributes['slug'] = Str::of($value)->slug('-') . '-' . time();
         //  $this->attributes['slug']= Str::of($value)->slug('-') . '-' . time() . Auth::id();
     }
+    public function talent()
+    {
+        return $this->belongsTo('App\Models\User', 'talent_id');
+    }
 
     public function category()
     {
