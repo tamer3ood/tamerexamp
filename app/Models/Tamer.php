@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Str;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 class Tamer extends Model
 {
@@ -27,6 +28,8 @@ class Tamer extends Model
     {
         return $this->belongsTo('App\Models\Category', 'sub_category_id');
     }
+
+
     public function tamerCategoryAttributeItems()
     {
         return $this->belongsToMany('App\Models\CategoryAttributeItem', 'tamer_category_attribute_item', 'tamer_id', 'category_attribute_item_id');

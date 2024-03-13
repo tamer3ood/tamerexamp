@@ -15,11 +15,12 @@ class TamerCategoryServiceResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id'=>$this->id,
-            'category_service_id'=>$this->category_service_id,
-            'is_basic_pk'=>$this->is_basic_pk,
-            'is_standard_pk'=>$this->is_standard_pk,
-            'is_advanced_pk'=>$this->is_advanced_pk,
+            'id' => $this->id,
+            'category_service_id' => $this->category_service_id,
+            'is_basic_pk' => $this->is_basic_pk,
+            'is_standard_pk' => $this->is_standard_pk,
+            'is_advanced_pk' => $this->is_advanced_pk,
+            'category_service_en' => $this->categoryService->title_en,
         ];
     }
 }

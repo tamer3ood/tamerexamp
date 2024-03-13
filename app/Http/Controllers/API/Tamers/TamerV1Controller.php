@@ -33,6 +33,8 @@ class TamerV1Controller extends Controller
      */
     public function index()
     {
+        // return TamerCategoryElement::with('categoryElement')->get();
+
         return TamerResource::collection(Tamer::all());
     }
     public function store(Request $request)
