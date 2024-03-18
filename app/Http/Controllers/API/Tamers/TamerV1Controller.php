@@ -171,7 +171,7 @@ class TamerV1Controller extends Controller
                 "max_no_of_simultaneous_tamers" => $request->input("max_no_of_simultaneous_tamers"),
                 "term_of_service_agreement" => $request->input("term_of_service_agreement"),
                 "privacy_notice_agreement" => $request->input("privacy_notice_agreement"),
-                "underReview" => $request->input("underReview"),
+                "underReview" => 'underReview',
 
 
             ];
