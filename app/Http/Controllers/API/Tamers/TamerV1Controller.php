@@ -332,8 +332,8 @@ class TamerV1Controller extends Controller
                             $filename,
                             "s3"
                         );
-                        $tamer = TamerFile::create([
-                            "tamer_id" => $request->input("tamer_id"),
+                        TamerFile::create([
+                            "tamer_id" => $tamer->id,
                             "file_type" => $mydata["file_type"],
                             "file_url" => $filename,
                         ]);
