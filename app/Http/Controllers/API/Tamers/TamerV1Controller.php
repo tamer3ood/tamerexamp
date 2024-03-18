@@ -127,7 +127,7 @@ class TamerV1Controller extends Controller
                 }
 
                 if (
-                    empty($validItems) &&
+                    empty ($validItems) &&
                     count($validationMessages) === 0
                 ) {
                     return response()->json(
@@ -139,7 +139,7 @@ class TamerV1Controller extends Controller
                     );
                 }
 
-                if (!empty($validationMessages)) {
+                if (!empty ($validationMessages)) {
                     return response()->json(
                         ["errors" => $validationMessages],
                         422
@@ -149,7 +149,7 @@ class TamerV1Controller extends Controller
             }
 
 
-            if (!empty($validationMessages)) {
+            if (!empty ($validationMessages)) {
                 return response()->json(
                     ["errors" => $validationMessages],
                     422
@@ -163,12 +163,11 @@ class TamerV1Controller extends Controller
                 "category_id" => $request->input("category_id"),
                 "sub_category_id" => $request->input("sub_category_id"),
                 "category_type_id" => $request->input("category_type_id"),
-                "is_basic" => $request->input("is_basic"),
-                "is_standard" => $request->input("is_standard"),
-                "is_advanced" => $request->input("is_advanced"),
+                "has_basic_package" => $request->input("is_basic"),
+                "has_standard_package" => $request->input("is_standard"),
+                "has_advanced_package" => $request->input("is_advanced"),
                 "standard_package_price" => $request->input("standard_package_price"),
                 "advanced_package_price" => $request->input("advanced_package_price"),
-
                 "max_no_of_simultaneous_tamers" => $request->input("max_no_of_simultaneous_tamers"),
                 "term_of_service_agreement" => $request->input("term_of_service_agreement"),
                 "privacy_notice_agreement" => $request->input("privacy_notice_agreement"),
@@ -292,7 +291,7 @@ class TamerV1Controller extends Controller
                     }
 
 
-                    if (!empty($validationMessages)) {
+                    if (!empty ($validationMessages)) {
                         return response()->json(
                             ["errors" => $validationMessages],
                             422
@@ -366,7 +365,7 @@ class TamerV1Controller extends Controller
                 //     ]);
                 // }
                 // dd('ff');
-                if (!empty($validationMessages)) {
+                if (!empty ($validationMessages)) {
                     return response()->json(
                         ["errors" => $validationMessages],
                         422
@@ -555,7 +554,7 @@ class TamerV1Controller extends Controller
             }
 
 
-            if (!empty($validationMessages)) {
+            if (!empty ($validationMessages)) {
                 return response()->json(
                     ["errors" => $validationMessages],
                     422
@@ -722,7 +721,7 @@ class TamerV1Controller extends Controller
                     }
 
 
-                    if (!empty($validationMessages)) {
+                    if (!empty ($validationMessages)) {
                         return response()->json(
                             ["errors" => $validationMessages],
                             422
@@ -836,7 +835,7 @@ class TamerV1Controller extends Controller
                 //     ]);
                 // }
                 // dd('ff');
-                if (!empty($validationMessages)) {
+                if (!empty ($validationMessages)) {
                     return response()->json(
                         ["errors" => $validationMessages],
                         422
@@ -1126,7 +1125,7 @@ class TamerV1Controller extends Controller
                     }
 
                     if (
-                        empty($validItems) &&
+                        empty ($validItems) &&
                         count($validationMessages) === 0
                     ) {
                         return response()->json(
@@ -1148,7 +1147,7 @@ class TamerV1Controller extends Controller
             }
 
 
-            if (!empty($validationMessages)) {
+            if (!empty ($validationMessages)) {
                 return response()->json(
                     ["errors" => $validationMessages],
                     422
@@ -1358,7 +1357,7 @@ class TamerV1Controller extends Controller
                     }
 
 
-                    if (!empty($validationMessages)) {
+                    if (!empty ($validationMessages)) {
                         return response()->json(
                             ["errors" => $validationMessages],
                             422
@@ -1507,7 +1506,7 @@ class TamerV1Controller extends Controller
                 //     ]);
                 // }
                 // dd('ff');
-                if (!empty($validationMessages)) {
+                if (!empty ($validationMessages)) {
                     return response()->json(
                         ["errors" => $validationMessages],
                         422
