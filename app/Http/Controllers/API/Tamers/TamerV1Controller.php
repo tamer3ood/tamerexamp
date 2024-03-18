@@ -214,7 +214,7 @@ class TamerV1Controller extends Controller
 
 
                     $tamer_category_element = TamerCategoryElement::create([
-                        "tamer_id" => $request->input("tamer_id"),
+                        "tamer_id" => $tamer->id,
                         // 'package_type'=>$pk['package_type'],
                         "category_element_id" => $pk["category_element_id"],
                         "basic_pk_element_value" =>
@@ -230,7 +230,7 @@ class TamerV1Controller extends Controller
             if ($request->input("_categoryService_package")) {
                 foreach ($request->input("_categoryService_package") as $key => $pk) {
                     $tamer_category_service = TamerCategoryService::create([
-                        "tamer_id" => $request->input("tamer_id"),
+                        "tamer_id" => $tamer->id,
                         "is_basic_pk" => $pk["is_basic_pk"],
                         "is_standard_pk" => $pk["is_standard_pk"],
                         "is_advanced_pk" => $pk["is_advanced_pk"],
@@ -297,7 +297,7 @@ class TamerV1Controller extends Controller
                         );
                     }
                     $tamer_add_on = TamerAddOn::create([
-                        "tamer_id" => $request->input("tamer_id"),
+                        "tamer_id" => $tamer->id,
                         "add_on_type" => $pk["add_on_type"],
                         "category_eleserv_id" => $pk["category_eleserv_id"],
                         "additional_days" => $pk["additional_days"],
@@ -371,7 +371,7 @@ class TamerV1Controller extends Controller
                     );
                 }
                 $tamer_req = TamerRequirement::create([
-                    "tamer_id" => $request->input("tamer_id"),
+                    "tamer_id" => $tamer->id,
                     "requirement_text" => $req["requirement_text"],
                     "answer_type" => $req["answer_type"],
                     "is_mandatory_requirement" =>
@@ -425,7 +425,7 @@ class TamerV1Controller extends Controller
                     ]);
                     // }
                     $tamer = TamerQuestion::create([
-                        "tamer_id" => $request->input("tamer_id"),
+                        "tamer_id" => $tamer->id,
                         "question_text" => $req["question_text"],
                         "answer_text" => $req["answer_text"],
                     ]);
