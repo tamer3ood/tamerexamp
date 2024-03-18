@@ -427,7 +427,7 @@ class TamerV1Controller extends Controller
                             "required|string",
                     ]);
                     // }
-                    $tamer = TamerQuestion::create([
+                    TamerQuestion::create([
                         "tamer_id" => $tamer->id,
                         "question_text" => $req["question_text"],
                         "answer_text" => $req["answer_text"],
