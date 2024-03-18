@@ -316,30 +316,30 @@ class TamerV1Controller extends Controller
                 }
             }
 
-            // if (count($request->_files) > 0) {
-            //     foreach ($request->_files as $key => $mydata) {
-            //         // dd($request->_files);
-            //         if ($mydata["file_url"]) {
-            //             $filename =
-            //                 time() .
-            //                 "-" .
-            //                 \Str::random(15) .
-            //                 "-" .
-            //                 $mydata["file_url"]->getClientOriginalName();
-            //             // $filename = time().'-'. \Str::random(15);
-            //             $mydata["file_url"]->storeAs(
-            //                 "tamer_files/",
-            //                 $filename,
-            //                 "s3"
-            //             );
-            //             $tamer = TamerFile::create([
-            //                 "tamer_id" => $request->input("tamer_id"),
-            //                 "file_type" => $mydata["file_type"],
-            //                 "file_url" => $filename,
-            //             ]);
-            //         }
-            //     }
-            // }
+            if (count($request->_files) > 0) {
+                foreach ($request->_files as $key => $mydata) {
+                    // dd($request->_files);
+                    if ($mydata["file_url"]) {
+                        $filename =
+                            time() .
+                            "-" .
+                            \Str::random(15) .
+                            "-" .
+                            $mydata["file_url"]->getClientOriginalName();
+                        // $filename = time().'-'. \Str::random(15);
+                        $mydata["file_url"]->storeAs(
+                            "tamer_files/",
+                            $filename,
+                            "s3"
+                        );
+                        $tamer = TamerFile::create([
+                            "tamer_id" => $request->input("tamer_id"),
+                            "file_type" => $mydata["file_type"],
+                            "file_url" => $filename,
+                        ]);
+                    }
+                }
+            }
             $selected_multiple_choice_no = 0;
             foreach ($request->input("_tamer_requirement") as $key => $req) {
                 $this->validate($request, [
