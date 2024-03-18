@@ -408,7 +408,7 @@ class TamerV1Controller extends Controller
                         "_tamer_step.*.description" => "required|string",
                     ]);
                     // }
-                    $tamer = TamerStep::create([
+                    TamerStep::create([
                         "tamer_id" => $tamer->id,
                         "name" => $req["name"],
                         "description" => $req["description"],
