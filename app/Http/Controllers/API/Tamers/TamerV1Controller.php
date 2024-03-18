@@ -61,7 +61,9 @@ class TamerV1Controller extends Controller
 
 
             $category = Category::findOrFail($request->input("category_id"));
+
             $sub_category = Category::findOrFail($request->input("sub_category_id"));
+
             // dd($sub_category);
 
             $validationMessages = [];
@@ -73,6 +75,7 @@ class TamerV1Controller extends Controller
 
 
             $sub_category_ids = $category->subCategories->pluck("id")->all();
+
             if (count($sub_category_ids) > 0) {
                 if (!in_array($request->input('sub_category_id'), $sub_category_ids)) {
                     $validationMessages[] = "Selected Sub Category not belongs to the main category";
@@ -313,30 +316,30 @@ class TamerV1Controller extends Controller
                 }
             }
 
-            if (count($request->_files) > 0) {
-                foreach ($request->_files as $key => $mydata) {
-                    // dd($request->_files);
-                    if ($mydata["file_url"]) {
-                        $filename =
-                            time() .
-                            "-" .
-                            \Str::random(15) .
-                            "-" .
-                            $mydata["file_url"]->getClientOriginalName();
-                        // $filename = time().'-'. \Str::random(15);
-                        $mydata["file_url"]->storeAs(
-                            "tamer_files/",
-                            $filename,
-                            "s3"
-                        );
-                        $tamer = TamerFile::create([
-                            "tamer_id" => $request->input("tamer_id"),
-                            "file_type" => $mydata["file_type"],
-                            "file_url" => $filename,
-                        ]);
-                    }
-                }
-            }
+            // if (count($request->_files) > 0) {
+            //     foreach ($request->_files as $key => $mydata) {
+            //         // dd($request->_files);
+            //         if ($mydata["file_url"]) {
+            //             $filename =
+            //                 time() .
+            //                 "-" .
+            //                 \Str::random(15) .
+            //                 "-" .
+            //                 $mydata["file_url"]->getClientOriginalName();
+            //             // $filename = time().'-'. \Str::random(15);
+            //             $mydata["file_url"]->storeAs(
+            //                 "tamer_files/",
+            //                 $filename,
+            //                 "s3"
+            //             );
+            //             $tamer = TamerFile::create([
+            //                 "tamer_id" => $request->input("tamer_id"),
+            //                 "file_type" => $mydata["file_type"],
+            //                 "file_url" => $filename,
+            //             ]);
+            //         }
+            //     }
+            // }
             $selected_multiple_choice_no = 0;
             foreach ($request->input("_tamer_requirement") as $key => $req) {
                 $this->validate($request, [
@@ -406,7 +409,7 @@ class TamerV1Controller extends Controller
                     ]);
                     // }
                     $tamer = TamerStep::create([
-                        "tamer_id" => $request->input("tamer_id"),
+                        "tamer_id" => $tamer->id,
                         "name" => $req["name"],
                         "description" => $req["description"],
                     ]);
