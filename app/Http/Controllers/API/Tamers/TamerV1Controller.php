@@ -164,6 +164,7 @@ class TamerV1Controller extends Controller
                 "title" => $request->input("title"),
                 "talent_id" => auth('api')->id(),
                 "category_id" => $request->input("category_id"),
+                "description" => $request->input("description"),
                 "sub_category_id" => $request->input("sub_category_id"),
                 "category_type_id" => $request->input("category_type_id"),
                 "has_basic_package" => $request->input("is_basic"),

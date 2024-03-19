@@ -93,7 +93,6 @@ Route::get('categories/category-element-add-on-atts/{category_element_id}', [Cat
 //tamer order
 Route::post('tamers/orders/ORD64b162e4a89ab/{tamer_id}', [TamerOrderV1Controller::class, 'store']);
 Route::post('tamers/orders/REQ64b37d917dc30/{tamer_id}/{tamer_order_id}', [TamerOrderV1Controller::class, 'addOrderRequirements']);
-
 Route::get('tamers/orders/SHOW64b40a338c436/{tamerOrder}', [TamerOrderV1Controller::class, 'show']);
 
 
