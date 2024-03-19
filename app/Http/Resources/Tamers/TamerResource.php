@@ -15,13 +15,13 @@ class TamerResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        // $talentName = $this->talent->fname . ' ' . Str::limit($this->talent->lname, '1', '.');
+        $talentName = $this->talent->fname . ' ' . Str::limit($this->talent->lname, '1', '.');
         return [
             'id' => $this->id,
             'title' => $this->title,
             'slug' => $this->slug,
             'talent_id' => $this->talent_id,
-            // 'talent_name' => $talentName,
+            'talent_name' => $talentName,
             'category_id' => $this->category_id,
             'category_title' => $this->category->title_en,
             'sub_category_id' => $this->sub_category_id,
